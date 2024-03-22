@@ -26,6 +26,85 @@ More explicit license information at the end of file.
 
 	/* C standard library dependencies */
 
+		#if !defined(int8_m)   || \
+			!defined(uint8_m)  || \
+			!defined(int16_m)  || \
+			!defined(uint16_m) || \
+			!defined(int32_m)  || \
+			!defined(uint32_m) || \
+			!defined(int64_m)  || \
+			!defined(uint64_m)
+
+			#define __STDC_LIMIT_MACROS
+			#define __STDC_CONSTANT_MACROS
+			#include <stdint.h>
+
+			#ifndef int8_m
+				#ifdef INT8_MAX
+					#define int8_m int8_t
+				#else
+					#define int8_m char
+				#endif
+			#endif
+
+			#ifndef uint8_m
+				#ifdef UINT8_MAX
+					#define uint8_m uint8_t
+				#else
+					#define uint8_m unsigned char
+				#endif
+			#endif
+
+			#ifndef int16_m
+				#ifdef INT16_MAX
+					#define int16_m int16_t
+				#else
+					#define int16_m short
+				#endif
+			#endif
+
+			#ifndef uint16_m
+				#ifdef UINT16_MAX
+					#define uint16_m uint16_t
+				#else
+					#define uint16_m unsigned short
+				#endif
+			#endif
+
+			#ifndef int32_m
+				#ifdef INT32_MAX
+					#define int32_m int32_t
+				#else
+					#define int32_m long
+				#endif
+			#endif
+
+			#ifndef uint32_m
+				#ifdef UINT32_MAX
+					#define uint32_m uint32_t
+				#else
+					#define uint32_m unsigned long
+				#endif
+			#endif
+
+			#ifndef int64_m
+				#ifdef INT64_MAX
+					#define int64_m int64_t
+				#else
+					#define int64_m long long
+				#endif
+			#endif
+
+			#ifndef uint64_m
+				#ifdef UINT64_MAX
+					#define uint64_m uint64_t
+				#else
+					#define uint64_m unsigned long long
+				#endif
+			#endif
+
+		#endif
+
 		#if !defined(size_m)
 
 			#include <stddef.h>
