@@ -2,7 +2,7 @@
 
 muUtility (acrynomized to muu) is a public domain header-only single-file C utility library used by most mu libraries. To use it, download the `muUtility.h` file, add it to your include path, and include it like so:
 
-```
+```c
 #define MUU_IMPLEMENTATION
 #include <muUtility.h>
 ```
@@ -141,7 +141,7 @@ Many mu functions will return this value if an object index reference creation f
 
 The `MU_SET_RESULT(res, val)` macro is a macro function that checks if the given parameter `res` is a null pointer. If it is, it does nothing, but if it isn't, it sets its value to the given parameter `val`. This macro saves a lot of code, shrinking down what would be this:
 
-```
+```c
 if (result != MU_NULL_PTR) {
     *result = ...;
 }
@@ -149,7 +149,7 @@ if (result != MU_NULL_PTR) {
 
 into this:
 
-```
+```c
 MU_SET_RESULT(result, ...)
 ```
 
@@ -157,7 +157,7 @@ MU_SET_RESULT(result, ...)
 
 The `MU_ASSERT(cond, res, val, after)` macro is a macro function used to make a short assertion statement. It is expanded like this:
 
-```
+```c
 if (!(cond)) {
     MU_SET_RESULT(res, val)
     after
@@ -168,7 +168,7 @@ if (!(cond)) {
 
 The `MU_ENUM(name, ...)` macro is a macro function used to declare an enumerator. The reason why one would prefer this over the traditional way of declaring enumerators is because it actually makes it a `size_m` which can avoid errors on certain compilers (looking at you, Microsoft) in regards to treating enumerators like values. It expands like this:
 
-```
+```c
 enum _##name{
     __VA_ARGS__
 };
@@ -200,27 +200,27 @@ Note that this doesn't mean that muUtility has a direct dependency on muMemoryAl
 
 The macro `MU_SAFEFUNC(result, lib_prefix, context, fail_return)` is a macro function that expands to do 2 things: ensure that the result parameter is automatically set to successful and that the library's global context has already been initialized. It expands like so:
 
-```
+```c
 MU_SET_RESULT(result, lib_prefix##SUCCESS)
 MU_ASSERT(context != MU_NULL_PTR, result, lib_prefix##NOT_YET_INITIALIZED, fail_return)
 ```
 
 An example usage would be:
 
-```
+```c
 MU_SAFEFUNC(result, MUX_, mux_global_context, return 0;)
 ```
 
 which would expand to:
 
-```
+```c
 MU_SET_RESULT(result, MUX_SUCCESS)
 MU_ASSERT(mux_global_context != MU_NULL_PTR, result, MUX_NOT_YET_INITIALIZED, return 0;)
 ```
 
 which (for funsies) would expand to:
 
-```
+```c
 if (result != MU_NULL_PTR) {
     *result = MUX_SUCCESS
 }
@@ -236,7 +236,7 @@ if (!(mux_global_context != MU_NULL_PTR)) {
 
 The macro `MU_HOLD(result, item, da, context, lib_prefix, fail_return, da_prefix)` is a macro function that expands to hold an element in a hold/release array, and makes thread safe holding very easy without changing the code depending on whether or not `MU_THREADSAFE` has been defined. It expands to:
 
-```
+```c
 MU_ASSERT(item < da.length, result, lib_prefix##INVALID_ID, fail_return)
 da_prefix##hold_element(0, &da, item);
 MU_ASSERT(da.data[item].active, result, lib_prefix##INVALID_ID, da_prefix##release_element(0, &da, item); fail_return)
@@ -244,13 +244,13 @@ MU_ASSERT(da.data[item].active, result, lib_prefix##INVALID_ID, da_prefix##relea
 
 An example usage would be:
 
-```
+```c
 MU_HOLD(result, object, MUX_GOBJECTS, mux_global_context, MUX_, return 0;, mux_object_)
 ```
 
 which would expand to:
 
-```
+```c
 MU_ASSERT(object < MUX_GOBJECTS.length, result, MUX_INVALID_ID, return 0;)
 mux_object_hold_element(0, &MUX_GOBJECTS, object);
 MU_ASSERT(MUX_GOBJECTS.data[object].active, result, MUX_INVALID_ID, mux_object_release_element(0, &MUX_GOBJECTS, item); return 0;)
@@ -258,7 +258,7 @@ MU_ASSERT(MUX_GOBJECTS.data[object].active, result, MUX_INVALID_ID, mux_object_r
 
 which (for funsies) would expand to:
 
-```
+```c
 if (!(object < MUX_GOBJECTS.length)) {
     if (result != MU_NULL_PTR) {
         *result = MUX_INVALID_ID;
@@ -279,6 +279,6 @@ if (!(MUX_GOBJECTS.data[object].active)) {
 
 The macro `MU_RELEASE(da, item, da_prefix)` is a macro function used to release an element in a hold/release array. It expands to:
 
-```
+```c
 da_prefix##release_element(0, &da, item);
 ```
