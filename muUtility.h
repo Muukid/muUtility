@@ -26,14 +26,15 @@ More explicit license information at the end of file.
 
 	/* C standard library dependencies */
 
-		#if !defined(int8_m)   || \
-			!defined(uint8_m)  || \
-			!defined(int16_m)  || \
-			!defined(uint16_m) || \
-			!defined(int32_m)  || \
-			!defined(uint32_m) || \
-			!defined(int64_m)  || \
-			!defined(uint64_m)
+		#if !defined(int8_m)      || \
+			!defined(uint8_m)     || \
+			!defined(int16_m)     || \
+			!defined(uint16_m)    || \
+			!defined(int32_m)     || \
+			!defined(uint32_m)    || \
+			!defined(int64_m)     || \
+			!defined(uint64_m)    || \
+			!defined(MU_SIZE_MAX)
 
 			#define __STDC_LIMIT_MACROS
 			#define __STDC_CONSTANT_MACROS
@@ -103,6 +104,10 @@ More explicit license information at the end of file.
 				#endif
 			#endif
 
+			#ifndef MU_SIZE_MAX
+				#define MU_SIZE_MAX SIZE_MAX
+			#endif
+
 		#endif
 
 		#if !defined(size_m)
@@ -111,16 +116,6 @@ More explicit license information at the end of file.
 
 			#ifndef size_m
 				#define size_m size_t
-			#endif
-
-		#endif
-
-		#if !defined(MU_SIZE_MAX)
-
-			#include <stdint.h>
-
-			#ifndef MU_SIZE_MAX
-				#define MU_SIZE_MAX SIZE_MAX
 			#endif
 
 		#endif
