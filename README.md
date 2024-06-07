@@ -1,5 +1,5 @@
 
-# muUtility v1.1.0
+# muUtility v1.1.1
 
 muUtility (acrynomized to muu) is a public domain header-only single-file C utility library used by most mu libraries. To use it, download the `muUtility.h` file, add it to your include path, and include it like so:
 
@@ -97,21 +97,21 @@ There are also several macro functions used to read and write to bytes. These ma
 
 `mu_rbe_uint64(b)`: Creates an expression of type `uint64_m` that reads the value stored in the 8-byte-length big-endian byte array `b`.
 
-`mu_wle_uint8(b, i)`: Reads the given contents of the 1-byte-length little-endian byte array `b` into the given `uint8_m` variable `i`.
+`mu_wle_uint8(b, i)`: Writes the contents of the given `uint8_m` variable `i` into the 1-byte-length little-endian byte array `b`.
 
-`mu_wbe_uint8(b, i)`: Reads the given contents of the 1-byte-length big-endian byte array `b` into the given `uint8_m` variable `i`.
+`mu_wbe_uint8(b, i)`: Writes the contents of the given `uint8_m` variable `i` into the 1-byte-length big-endian byte array `b`.
 
-`mu_wle_uint16(b, i)`: Reads the given contents of the 2-byte-length little-endian byte array `b` into the given `uint16_m` variable `i`.
+`mu_wle_uint16(b, i)`: Writes the contents of the given `uint16_m` variable `i` into the 2-byte-length little-endian byte array `b`.
 
-`mu_wbe_uint16(b, i)`: Reads the given contents of the 2-byte-length big-endian byte array `b` into the given `uint16_m` variable `i`.
+`mu_wbe_uint16(b, i)`: Writes the contents of the given `uint16_m` variable `i` into the 2-byte-length big-endian byte array `b`.
 
-`mu_wle_uint32(b, i)`: Reads the given contents of the 4-byte-length little-endian byte array `b` into the given `uint32_m` variable `i`.
+`mu_wle_uint32(b, i)`: Writes the contents of the given `uint32_m` variable `i` into the 4-byte-length little-endian byte array `b`.
 
-`mu_wbe_uint32(b, i)`: Reads the given contents of the 4-byte-length big-endian byte array `b` into the given `uint32_m` variable `i`.
+`mu_wbe_uint32(b, i)`: Writes the contents of the given `uint32_m` variable `i` into the 4-byte-length big-endian byte array `b`.
 
-`mu_wle_uint64(b, i)`: Reads the given contents of the 8-byte-length little-endian byte array `b` into the given `uint64_m` variable `i`.
+`mu_wle_uint64(b, i)`: Writes the contents of the given `uint64_m` variable `i` into the 8-byte-length little-endian byte array `b`.
 
-`mu_wbe_uint64(b, i)`: Reads the given contents of the 8-byte-length big-endian byte array `b` into the given `uint64_m` variable `i`.
+`mu_wbe_uint64(b, i)`: Writes the contents of the given `uint64_m` variable `i` into the 8-byte-length big-endian byte array `b`.
 
 ## Null values
 
