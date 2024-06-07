@@ -8,7 +8,7 @@ More explicit license information at the end of file.
 */
 
 /* @DOCBEGIN
-# muUtility v1.1.0
+# muUtility v1.1.1
 
 muUtility (acrynomized to muu) is a public domain header-only single-file C utility library used by most mu libraries. To use it, download the `muUtility.h` file, add it to your include path, and include it like so:
 
@@ -184,7 +184,7 @@ muUtility has no dependencies on any other libraries.
 
 			#define MUU_VERSION_MAJOR 1
 			#define MUU_VERSION_MINOR 1
-			#define MUU_VERSION_PATCH 0
+			#define MUU_VERSION_PATCH 1
 
 		// @DOCLINE ## `MUDEF`
 
@@ -266,38 +266,38 @@ muUtility has no dependencies on any other libraries.
 				#define mu_rbe_uint64(b) ((uint64_m)b[7] << 0 | (uint64_m)b[6] << 8 | (uint64_m)b[5] << 16 | (uint64_m)b[4] << 24 | (uint64_m)b[3] << 32 | (uint64_m)b[2] << 40 | (uint64_m)b[1] << 48 | (uint64_m)b[0] << 56)
 			#endif
 
-			// @DOCLINE `mu_wle_uint8(b, i)`: Reads the given contents of the 1-byte-length little-endian byte array `b` into the given `uint8_m` variable `i`.
+			// @DOCLINE `mu_wle_uint8(b, i)`: Writes the contents of the given `uint8_m` variable `i` into the 1-byte-length little-endian byte array `b`.
 			#ifndef mu_wle_uint8
 				#define mu_wle_uint8(b, i) b[0] = (uint8_m)(i >> 0);
 			#endif
-			// @DOCLINE `mu_wbe_uint8(b, i)`: Reads the given contents of the 1-byte-length big-endian byte array `b` into the given `uint8_m` variable `i`.
+			// @DOCLINE `mu_wbe_uint8(b, i)`: Writes the contents of the given `uint8_m` variable `i` into the 1-byte-length big-endian byte array `b`.
 			#ifndef mu_wbe_uint8
 				#define mu_wbe_uint8(b, i) b[0] = (uint8_m)(i >> 0);
 			#endif
 
-			// @DOCLINE `mu_wle_uint16(b, i)`: Reads the given contents of the 2-byte-length little-endian byte array `b` into the given `uint16_m` variable `i`.
+			// @DOCLINE `mu_wle_uint16(b, i)`: Writes the contents of the given `uint16_m` variable `i` into the 2-byte-length little-endian byte array `b`.
 			#ifndef mu_wle_uint16
 				#define mu_wle_uint16(b, i) b[0] = (uint8_m)(i >> 0); b[1] = (uint8_m)(i >> 8);
 			#endif
-			// @DOCLINE `mu_wbe_uint16(b, i)`: Reads the given contents of the 2-byte-length big-endian byte array `b` into the given `uint16_m` variable `i`.
+			// @DOCLINE `mu_wbe_uint16(b, i)`: Writes the contents of the given `uint16_m` variable `i` into the 2-byte-length big-endian byte array `b`.
 			#ifndef mu_wbe_uint16
 				#define mu_wbe_uint16(b, i) b[1] = (uint8_m)(i >> 0); b[0] = (uint8_m)(i >> 8);
 			#endif
 
-			// @DOCLINE `mu_wle_uint32(b, i)`: Reads the given contents of the 4-byte-length little-endian byte array `b` into the given `uint32_m` variable `i`.
+			// @DOCLINE `mu_wle_uint32(b, i)`: Writes the contents of the given `uint32_m` variable `i` into the 4-byte-length little-endian byte array `b`.
 			#ifndef mu_wle_uint32
 				#define mu_wle_uint32(b, i) b[0] = (uint8_m)(i >> 0); b[1] = (uint8_m)(i >> 8); b[2] = (uint8_m)(i >> 16); b[3] = (uint8_m)(i >> 24);
 			#endif
-			// @DOCLINE `mu_wbe_uint32(b, i)`: Reads the given contents of the 4-byte-length big-endian byte array `b` into the given `uint32_m` variable `i`.
+			// @DOCLINE `mu_wbe_uint32(b, i)`: Writes the contents of the given `uint32_m` variable `i` into the 4-byte-length big-endian byte array `b`.
 			#ifndef mu_wbe_uint32
 				#define mu_wbe_uint32(b, i) b[3] = (uint8_m)(i >> 0); b[2] = (uint8_m)(i >> 8); b[1] = (uint8_m)(i >> 16); b[0] = (uint8_m)(i >> 24);
 			#endif
 
-			// @DOCLINE `mu_wle_uint64(b, i)`: Reads the given contents of the 8-byte-length little-endian byte array `b` into the given `uint64_m` variable `i`.
+			// @DOCLINE `mu_wle_uint64(b, i)`: Writes the contents of the given `uint64_m` variable `i` into the 8-byte-length little-endian byte array `b`.
 			#ifndef mu_wle_uint64
 				#define mu_wle_uint64(b, i) b[0] = (uint8_m)(i >> 0); b[1] = (uint8_m)(i >> 8); b[2] = (uint8_m)(i >> 16); b[3] = (uint8_m)(i >> 24); b[4] = (uint8_m)(i >> 32); b[5] = (uint8_m)(i >> 40); b[6] = (uint8_m)(i >> 48); b[7] = (uint8_m)(i >> 56);
 			#endif
-			// @DOCLINE `mu_wbe_uint64(b, i)`: Reads the given contents of the 8-byte-length big-endian byte array `b` into the given `uint64_m` variable `i`.
+			// @DOCLINE `mu_wbe_uint64(b, i)`: Writes the contents of the given `uint64_m` variable `i` into the 8-byte-length big-endian byte array `b`.
 			#ifndef mu_wbe_uint64
 				#define mu_wbe_uint64(b, i) b[7] = (uint8_m)(i >> 0); b[6] = (uint8_m)(i >> 8); b[5] = (uint8_m)(i >> 16); b[4] = (uint8_m)(i >> 24); b[3] = (uint8_m)(i >> 32); b[2] = (uint8_m)(i >> 40); b[1] = (uint8_m)(i >> 48); b[0] = (uint8_m)(i >> 56);
 			#endif
