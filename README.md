@@ -1,7 +1,7 @@
 
 # muUtility v1.1.1
 
-muUtility (acrynomized to muu) is a public domain header-only single-file C utility library used by most mu libraries. To use it, download the `muUtility.h` file, add it to your include path, and include it like so:
+muUtility (acrynomized to muu) is a public domain single-file C utility library used by most mu libraries. To use it, download the `muUtility.h` file, add it to your include path, and include it like so:
 
 ```c
 #define MUU_IMPLEMENTATION
