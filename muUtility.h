@@ -9,7 +9,7 @@ More explicit license information at the end of file.
 
 /* @DOCBEGIN
 
-# muUtility v2.0.0
+# muUtility v2.0.1
 
 muUtility (acrynomized to muu) is a public domain single-file single-header C utility library with no dependencies used by most mu libraries. It contains a collection of definitions and functions within a header wrapper (`MUU_H`) that is automatically defined if it is not defined already.
 
@@ -29,7 +29,7 @@ muUtility is licensed under public domain or MIT license, whichever you prefer. 
 		
 		#define MUU_VERSION_MAJOR 2
 		#define MUU_VERSION_MINOR 0
-		#define MUU_VERSION_PATCH 0
+		#define MUU_VERSION_PATCH 1
 
 	// @DOCLINE # `MUDEF`
 		// @DOCLINE The `MUDEF` macro is used by virtually all mu libraries, and is generally added before a header-defined variable or function. Its default value is `extern`, but can be changed to `static` by defining `MU_STATIC` before the header section of muUtility is defined. Its value can also be overwritten entirely to anything else by directly defining `MUDEF`.
@@ -711,7 +711,7 @@ muUtility is licensed under public domain or MIT license, whichever you prefer. 
 		The `MU_SET_RESULT(res, val)` macro is an overridable function that checks if the given parameter `res` is a null pointer. If it is, it does nothing, but if it isn't, it dereferences the pointer and sets the value to `val`. This macro saves a lot of code, shrinking down what would be this:
 
 		```c
-		if (result != MU_NULL_PTR) {
+		if (result) {
 			*result = ...;
 		}
 		```
@@ -725,7 +725,7 @@ muUtility is licensed under public domain or MIT license, whichever you prefer. 
 		@DOCEND */
 
 		#ifndef MU_SET_RESULT
-			#define MU_SET_RESULT(res, val) if(res!=MU_NULL_PTR){*res=val;}
+			#define MU_SET_RESULT(res, val) if(res){*res=val;}
 		#endif
 
 	// @DOCLINE # Enum

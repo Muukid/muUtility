@@ -1,6 +1,6 @@
 
 
-# muUtility v2.0.0
+# muUtility v2.0.1
 
 muUtility (acrynomized to muu) is a public domain single-file single-header C utility library with no dependencies used by most mu libraries. It contains a collection of definitions and functions within a header wrapper (`MUU_H`) that is automatically defined if it is not defined already.
 
@@ -203,7 +203,7 @@ The following macros exist for byte manipulation regarding 64-bit integers:
 The `MU_SET_RESULT(res, val)` macro is an overridable function that checks if the given parameter `res` is a null pointer. If it is, it does nothing, but if it isn't, it dereferences the pointer and sets the value to `val`. This macro saves a lot of code, shrinking down what would be this:
 
 ```c
-if (result != MU_NULL_PTR) {
+if (result) {
 *result = ...;
 }
 ```
